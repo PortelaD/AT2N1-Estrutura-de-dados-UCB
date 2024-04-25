@@ -53,3 +53,35 @@ int readArtistsFromFile(Artist artists[], char *filename) {
     fclose(file);
     return num_artists;
 }
+
+void writeArtistsToFile(Artist artists[], int num_artists, char *filename) {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo %s para escrita.\n", filename);
+        exit(1);
+    }
+
+    for (int i = 0; i < num_artists; i++) {
+        fprintf(file, "%s\n%s\n%s\n", artists[i].name, artists[i].genre, artists[i].location);
+        for (int j = 0; j < artists[i].num_albums; j++) {
+            fprintf(file, "%s\n", artists[i].albums[j]);
+        }
+        fprintf(file, "==========\n");
+    }
+
+    fclose(file);
+}
+
+
+void displayMenu() {
+    printf("\n");
+    printf("╔═══════════════════════ Menu ═══════════════════════╗\n");
+    printf("║   1. Inserir novo artista                            ║\n");
+    printf("║   2. Remover artista                                 ║\n");
+    printf("║   3. Editar artista                                  ║\n");
+    printf("║   4. Buscar artista (binária)                        ║\n");
+    printf("║   5. Buscar álbum (sequencial)                       ║\n");
+    printf("║   6. Sair                                            ║\n");
+    printf("╚═════════════════════════════════════════════════════╝\n");
+    printf("\n");
+}
