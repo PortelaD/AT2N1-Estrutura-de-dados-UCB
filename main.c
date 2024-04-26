@@ -85,3 +85,45 @@ void displayMenu() {
     printf("╚═════════════════════════════════════════════════════╝\n");
     printf("\n");
 }
+
+int main() {
+    Artist artists[MAX_ARTISTS];
+    int num_artists;
+    char filename[] = "artistas.txt";
+
+    num_artists = readArtistsFromFile(artists, filename);
+
+    int choice;
+    do {
+        displayMenu();
+        printf("\nEscolha uma opção: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                insertArtist(artists, &num_artists);
+                break;
+            case 2:
+                removeArtist(artists, &num_artists);
+                break;
+            case 3:
+                editArtist(artists, num_artists);
+                break;
+            case 4:
+                binarySearchArtist(artists, num_artists);
+                break;
+            case 5:
+                sequentialSearchAlbum(artists, num_artists);
+                break;
+            case 6:
+                printf("Saindo...\n");
+                break;
+            default:
+                printf("Opção inválida!\n");
+        }
+    } while (choice != 6);
+
+    writeArtistsToFile(artists, num_artists, filename);
+
+    return 0;
+}
