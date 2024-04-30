@@ -5,10 +5,13 @@ Matrícula: UC21100134
 
 
 INSTRUÇÕES PARA INICIALIZAR O CÓDIGO
+
 É necessário a utilização das Extensões:
+
 C/C++ Compile Run e C/C++ da Microsoft
 
-É necessário também baixar um programa
+É necessário também baixar um programa:
+
 tdm-gcc para windows
 
 Eu fiz o download nesse link:
